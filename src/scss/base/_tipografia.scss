@@ -2,7 +2,7 @@
 @use 'mixins' as m;
 
 h1, h2, h3 {
-    
+    @include m.headings
 }
 
 h1 {
@@ -16,4 +16,16 @@ h3 {
 }
 .text-center {
     text-align: center;
+}
+
+// Selectores de Atributo
+// $= que termine por...
+// *= que contenga...
+// ^= que comience por...
+// = que el nombre de las clase sea...
+
+
+// Selector de atributo que termine en __heading
+[class$="__heading"] {
+    @include m.nombre-pagina;
 }
