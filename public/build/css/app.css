@@ -404,4 +404,15 @@ h3 {
   width: auto;
   align-self: flex-start;
 }
+
+.acciones {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.acciones__enlace {
+  color: #1a1b15;
+  font-size: 1.6rem;
+  font-weight: 300;
+}
 /*# sourceMappingURL=app.css.map */
