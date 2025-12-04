@@ -8,4 +8,40 @@
         url(../img/grafico.svg), 
         linear-gradient(to right, rgba(v.$negro, 1), rgba(v.$negro, .5)), 
         image-set(url(../img/header.avif) 1x, url(../img/header.webp) 1x, url(../img/header.jpeg) 1x);
+    
+    &__contenedor {
+        @include m.contenedor;
+    }
+
+    &__navegacion {
+        padding: 5rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        @include m.tablet {
+            justify-content: flex-end;
+        }
+    }
+
+    &__enlace {
+        color: v.$blanco;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: color .2s ease-out;
+
+        &:hover {
+            color: v.$azul;
+        }
+    }
+
+    &__contenido {
+        padding-top: 10rem;
+        @include m.tablet {
+            padding: 5rem;
+        }
+    }
+    &__logo {
+        @include m.texto-fluido(2rem, 8rem);
+    }
 }
