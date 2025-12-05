@@ -8,6 +8,9 @@
         url(../img/grafico.svg), 
         linear-gradient(to right, rgba(v.$negro, 1), rgba(v.$negro, .5)), 
         image-set(url(../img/header.avif) 1x, url(../img/header.webp) 1x, url(../img/header.jpeg) 1x);
+    background-repeat: no-repeat;
+    background-size: 400px, 400px, cover, cover;
+    background-position: top left, bottom right, center, center;
     
     &__contenedor {
         @include m.contenedor;
