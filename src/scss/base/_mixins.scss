@@ -49,7 +49,7 @@
 }
 
 @mixin contenedor {
-    width: min(95%, 120rem);
+    width: min(95%, 140rem);
     margin: 0 auto;
 }
 @mixin contenedor-sm {
@@ -67,8 +67,24 @@
     text-align: center;
 }
 @mixin texto-fluido($min, $max) {
-    font-size: clamp($min, -0.8rem + 10vw ,$max);
+    font-size: clamp($min, -0.3rem + 10vw ,$max);
 }
-@mixin texto-degradado {
-
+@mixin texto-degradado($inicio, $final) {
+    background: linear-gradient(to right, $inicio, $final);
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    @include tablet {
+        text-align: left;
+        display: inline-block;
+    }
+}
+@mixin logo {
+    color: v.$blanco;
+    text-align: center;
+    margin: 2rem;
+    @include desktop {
+        text-align: left;
+        margin: 0;
+    }
 }
