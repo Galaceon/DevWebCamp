@@ -11,10 +11,11 @@
         color: v.$blanco;
         font-size: 2rem;
         padding: 2rem 1.5rem;
-        font-weight: bold;
+        font-weight: v.$black;
         text-transform: uppercase;
         text-align: center;
         display: block;
+        transition: all .2s ease-out;
 
         @include m.desktop {
             display: inline-block;

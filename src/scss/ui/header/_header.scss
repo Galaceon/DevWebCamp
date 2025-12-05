@@ -30,7 +30,7 @@
         color: v.$blanco;
         font-size: 1.5rem;
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: v.$black;
         transition: color .2s ease-out;
 
         &:hover {
