@@ -79,3 +79,12 @@
         display: inline-block;
     }
 }
+@mixin logo {
+    color: v.$blanco;
+    text-align: center;
+    margin: 2rem;
+    @include desktop {
+        text-align: left;
+        margin: 0;
+    }
+}
