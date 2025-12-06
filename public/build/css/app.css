@@ -665,4 +665,16 @@ h3 {
     justify-content: flex-end;
   }
 }
+
+.alerta {
+  padding: 1.5rem 1.5rem 1.5rem 3rem;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.alerta__error {
+  background-color: rgb(255, 118.6, 118.6);
+  border-left: 0.5rem solid rgb(169, 0, 0);
+}
 /*# sourceMappingURL=app.css.map */
