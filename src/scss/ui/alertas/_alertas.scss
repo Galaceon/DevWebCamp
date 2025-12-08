@@ -13,9 +13,11 @@
     &__error {
         background-color: color.scale(v.$rojo, $lightness: 60%);
         border-left: .5rem solid v.$rojo;
+        color: color.scale(v.$rojo, $lightness: -40%);
     }
     &__exito {
-        background-color: color.scale(v.$verde, $lightness: 40%);
+        background-color: color.scale(v.$verde, $lightness: 60%);
         border-left: .5rem solid v.$verde;
+        color: color.scale(v.$verde, $lightness: -45%);
     }
 }
