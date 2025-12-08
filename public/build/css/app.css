@@ -667,7 +667,7 @@ h3 {
 }
 
 .alerta {
-  padding: 1.5rem 1.5rem 1.5rem 3rem;
+  padding: 1.5rem 1.5rem 1.5rem 2.5rem;
   text-transform: uppercase;
   margin: 1rem 0;
   font-size: 1.3rem;
@@ -676,5 +676,9 @@ h3 {
 .alerta__error {
   background-color: rgb(255, 118.6, 118.6);
   border-left: 0.5rem solid rgb(169, 0, 0);
+}
+.alerta__exito {
+  background-color: rgb(83.1692307692, 253.4307692308, 83.1692307692);
+  border-left: 0.5rem solid #02db02;
 }
 /*# sourceMappingURL=app.css.map */
