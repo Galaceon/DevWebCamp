@@ -2,7 +2,7 @@
     <div class="header__contenedor">
         <nav class="header__navegacion">
             <a href="/registro" class="header__enlace">Registro</a>
-            <a href="/Iniciar Sesión" class="header__enlace">Iniciar Sesión</a>
+            <a href="/login" class="header__enlace">Iniciar Sesión</a>
         </nav>
 
         <div class="header__contenido">
