@@ -125,3 +125,17 @@
         display: none;
     }
 }
+@mixin enlace {
+    color: v.$blanco;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: v.$black;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color .2s ease-out;
+    
+    &:hover {
+        color: v.$azul;
+    }
+}
