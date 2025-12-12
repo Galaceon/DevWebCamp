@@ -27,10 +27,6 @@
         @include m.logo;
         @include m.texto-fluido(2rem, 3rem);
     }
-
-    &__nav {
-
-    }
     &__form {
         display: flex;
         justify-content: center;
@@ -60,7 +56,8 @@
         padding: 2rem;
         transition: all .2s ease-in;
 
-        &:hover {
+        &:hover,
+        &--actual {
             background-color: color.scale(v.$gris-oscuro, $lightness: 20%);
             color: v.$blanco;
             border-radius: 1rem;
@@ -80,6 +77,20 @@
         width: 100%;
         @include m.tablet {
             padding: 1rem 5rem 3rem y 5rem;
+        }
+    }
+    &__contenedor-boton {
+        @include m.tablet {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    &__boton {
+        @include m.boton(v.$azul, v.$blanco);
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        @include m.tablet {
+            width: auto;
         }
     }
 }
