@@ -73,6 +73,7 @@
         margin-top: .5rem;
     }
     &__contenido {
+        background-color: color.scale(v.$blanco, $lightness: -10%);
         padding: 1rem 1rem 3rem 1rem;
         width: 100%;
         @include m.tablet {
@@ -83,6 +84,7 @@
         @include m.tablet {
             display: flex;
             justify-content: center;
+            margin-bottom: 5rem;
         }
     }
     &__boton {
@@ -92,5 +94,15 @@
         @include m.tablet {
             width: auto;
         }
+    }
+    &__contenedor {
+        @include m.shadow;
+        background-color: v.$blanco;
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+    &__formulario {
+        @extend .dashboard__contenedor;
+        @include m.contenedor-md;
     }
 }

@@ -14,6 +14,6 @@
     <form class="formulario" method="POST" action="/admin/ponentes/crear" enctype="multipart/form-data">
         <?php include_once __DIR__ . '/formulario.php'; ?>
 
-        <input type="submit" value="Registrar Ponente" class="formulario__submit">
+        <input type="submit" value="Registrar Ponente" class="formulario__submit formulario__submit--registrar">
     </form>
 </div>
