@@ -394,6 +394,9 @@ h3 {
   border: 1px solid rgb(160.5, 187.5, 214.5);
   border-radius: 0.5rem;
 }
+.formulario__input--file {
+  border: none;
+}
 .formulario__submit {
   background-color: #007df4;
   padding: 1.5rem 4rem;
