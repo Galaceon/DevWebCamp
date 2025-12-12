@@ -368,6 +368,16 @@ h3 {
   display: flex;
   flex-direction: column;
 }
+.formulario__fieldset {
+  border: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+.formulario__legend {
+  color: #64748B;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
 .formulario__campo {
   display: flex;
   flex-direction: column;
@@ -404,6 +414,9 @@ h3 {
 .formulario__submit {
   width: auto;
   align-self: flex-start;
+}
+.formulario__submit--registrar {
+  width: 100%;
 }
 
 .acciones, .acciones--centrar {
@@ -780,6 +793,7 @@ h3 {
   margin-top: 0.5rem;
 }
 .dashboard__contenido {
+  background-color: rgb(229.5, 229.5, 229.5);
   padding: 1rem 1rem 3rem 1rem;
   width: 100%;
 }
@@ -792,6 +806,7 @@ h3 {
   .dashboard__contenedor-boton {
     display: flex;
     justify-content: center;
+    margin-bottom: 5rem;
   }
 }
 .dashboard__boton {
@@ -819,5 +834,15 @@ h3 {
   .dashboard__boton {
     width: auto;
   }
+}
+.dashboard__contenedor, .dashboard__formulario {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: #FFFFFF;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.dashboard__formulario {
+  width: min(95%, 80rem);
+  margin: 0 auto;
 }
 /*# sourceMappingURL=app.css.map */
