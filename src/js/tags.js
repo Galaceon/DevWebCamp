@@ -4,6 +4,7 @@
     if(tagsInput) {
 
         const tagsDiv = document.querySelector('#tags');
+        const tagsInputHidden = document.querySelector('[name="tags"]');
 
         let tags = [];
 
@@ -32,8 +33,27 @@
         }
 
         function mostrarTags() {
-                
+            tagsDiv.textContent = '';
+            tags.forEach(tag => {
+                const etiqueta = document.createElement('LI');
+                etiqueta.classList.add('formulario__tag');
+                etiqueta.textContent = tag;
+                etiqueta.onclick = eliminarTag;
+
+                tagsDiv.appendChild(etiqueta);
+            })
+
+            actualizarInputHidden();
+        }
+
+        function eliminarTag(e) {
+            e.target.remove();
+            tags = tags.filter(tag => tag !== e.target.textContent);
+            actualizarInputHidden();
+        }
+
+        function actualizarInputHidden() {
+            tagsInputHidden.value = tags.toString();
         }
     }
 })()
-
