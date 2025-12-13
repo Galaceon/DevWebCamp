@@ -29,7 +29,7 @@
                 tagsInput.value = '';
 
                 mostrarTags();
-            }    
+            }
         }
 
         function mostrarTags() {

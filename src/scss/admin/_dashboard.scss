@@ -8,6 +8,7 @@
     flex-direction: column;
     background-color: v.$gris-claro;
 
+    // HEADER
     &__header {
         background-color: v.$gris-oscuro;
         padding: 2rem;
@@ -34,10 +35,15 @@
     &__submit--logout {
         @include m.enlace;
     }
+
+    // SIDEBAR Y CONTENIDO PRINCIPAL
+    // SIDEBAR
     &__grid {
         display: flex;
         flex: 1;
+        overflow-y: auto;
     }
+
     &__sidebar {
         background-color: color.scale(v.$gris-oscuro, $lightness: 10%);
         width: 12rem;
@@ -72,10 +78,13 @@
         font-weight: v.$bold;
         margin-top: .5rem;
     }
+
+    // CONTENIDO PRINCIPAL
     &__contenido {
         background-color: color.scale(v.$blanco, $lightness: -10%);
         padding: 1rem 1rem 3rem 1rem;
         width: 100%;
+        overflow: scroll;
         @include m.tablet {
             padding: 1rem 5rem 3rem y 5rem;
         }

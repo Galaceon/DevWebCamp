@@ -57,6 +57,9 @@
             border-radius: 0 .5rem .5rem 0;
         }
     }
+    &__listado {
+        @include m.tags;
+    }
     &__submit {
         @include m.boton(v.$azul, v.$blanco);
         width: auto;
