@@ -9,10 +9,11 @@ use MVC\Router;
 class PonentesController {
 
     public static function index(Router $router) {
-
+        $ponentes = Ponente::all();
 
         $router->render('admin/ponentes/index', [
-            'titulo' => 'Ponentes / Conferencistas'
+            'titulo' => 'Ponentes / Conferencistas',
+            'ponentes' => $ponentes
         ]);
     }
 
@@ -30,19 +31,35 @@ class PonentesController {
                 }
 
                 $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('png', 80);
-                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('webp$imagen_webp', 80);
+                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('webp', 80);
 
                 $nombre_imagen = md5(uniqid(rand(), true));
 
                 $_POST['imagen'] = $nombre_imagen;
             }
+            // Convertir el array de redes a string con json (siendo un array sincronizar() no funcionaria)
+            $_POST['redes'] = json_encode($_POST['redes'], JSON_UNESCAPED_SLASHES);
 
+            // Sincronizo el objeto modelo de Ponente con los datos que vienen en el POST
             $ponente->sincronizar($_POST);
 
             // Validar
             $alertas = $ponente->validar();
 
             // Guardar el Registro
+            if(empty($alertas)) {
+
+                // Guardar las imagenes
+                $imagen_png->save($carpeta_imagenes . '/' . $nombre_imagen . ".png");
+                $imagen_webp->save($carpeta_imagenes . '/' . $nombre_imagen . ".webp");
+
+                // Guardar en la DB
+                $resultado = $ponente->guardar();
+
+                if($resultado) {
+                    header('Location: /admin/ponentes');
+                }
+            }
         }
 
         $router->render('admin/ponentes/crear', [
