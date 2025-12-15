@@ -417,6 +417,12 @@ h3 {
   flex: 1;
   border-radius: 0 0.5rem 0.5rem 0;
 }
+.formulario__texto {
+  margin-top: 3rem;
+}
+.formulario__imagen {
+  max-width: 20rem;
+}
 .formulario__listado {
   margin: 0;
   padding: 0;
