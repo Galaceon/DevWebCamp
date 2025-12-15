@@ -15,7 +15,13 @@ class PonentesController {
             exit;
         }
 
-        $pagina_actual = 1;
+        $pagina_actual = $_GET['page'];
+        $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
+
+        if(!$pagina_actual || $pagina_actual < 1) {
+            header('Location: /admin/ponentes?page=1');
+        }
+
         $registros_por_pagina = 10;
         $total_registros = 10;
 
