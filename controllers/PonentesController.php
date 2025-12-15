@@ -61,11 +61,14 @@ class PonentesController {
                 }
             }
         }
+        
+        $redes = json_decode($ponente->redes);
 
         $router->render('admin/ponentes/crear', [
             'titulo' => 'Registrar Ponente',
             'alertas' => $alertas,
-            'ponente' => $ponente
+            'ponente' => $ponente,
+            'redes' => $redes
         ]);
     }
 
@@ -88,10 +91,73 @@ class PonentesController {
 
         $ponente->imagen_actual = $ponente->imagen;
 
+        $redes = json_decode($ponente->redes);
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Leer Imagen
+            if(!empty($_FILES['imagen']['tmp_name'])) {
+                $carpeta_imagenes = '../public/img/speakers';
+
+                if(!is_dir($carpeta_imagenes)) {
+                    mkdir($carpeta_imagenes, 0755, true);
+                }
+
+                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('png', 80);
+                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('webp', 80);
+
+                $nombre_imagen = md5(uniqid(rand(), true));
+
+                $_POST['imagen'] = $nombre_imagen;
+            } else {
+                $_POST['imagen'] = $ponente->imagen_actual;
+            }
+
+            // Convertir el array de redes a string con json (siendo un array sincronizar() no funcionaria)
+            $_POST['redes'] = json_encode($_POST['redes'], JSON_UNESCAPED_SLASHES);
+
+            $ponente->sincronizar($_POST);
+
+            $alertas = $ponente->validar();
+
+            if(empty($alertas)) {
+                if(isset($nombre_imagen)) {
+                    // Guardar las imagenes
+                    $imagen_png->save($carpeta_imagenes . '/' . $nombre_imagen . ".png");
+                    $imagen_webp->save($carpeta_imagenes . '/' . $nombre_imagen . ".webp");
+                }
+                $resultado = $ponente->guardar();
+
+                if($resultado) {
+                    header('Location: /admin/ponentes');
+                }
+            }
+        }
+
         $router->render('admin/ponentes/editar', [
             'titulo' => 'Actualizar Ponente',
             'alertas' => $alertas,
-            'ponente' => $ponente
+            'ponente' => $ponente,
+            'redes' => $redes
         ]);
+    }
+
+    public static function eliminar() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+
+            $ponente = Ponente::find($id);
+
+            if(!isset($ponente)) {
+                header('Location: /admin/ponentes');
+            }
+
+            $resultado  = $ponente->eliminar();
+
+            if($resultado) {
+                header('Location: /admin/ponentes');
+            }
+
+            debuguear($ponente);
+        }
     }
 }
