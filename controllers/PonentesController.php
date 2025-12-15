@@ -9,7 +9,16 @@ use MVC\Router;
 class PonentesController {
 
     public static function index(Router $router) {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
+
         $ponentes = Ponente::all();
+
+        if(!is_admin()) {
+            header('Location: /login');
+        }
 
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
@@ -18,10 +27,19 @@ class PonentesController {
     }
 
     public static function crear(Router $router) {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
+
         $alertas = [];
         $ponente =  new Ponente;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /login');
+                exit;
+            }
             // Leer Imagen
             if(!empty($_FILES['imagen']['tmp_name'])) {
                 $carpeta_imagenes = '../public/img/speakers';
@@ -73,6 +91,11 @@ class PonentesController {
     }
 
     public static function editar(Router $router) {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
+
         $alertas = [];
         // Validar el ID
         $id = $_GET['id'];
@@ -94,6 +117,11 @@ class PonentesController {
         $redes = json_decode($ponente->redes);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /login');
+                exit;
+            }
+
             // Leer Imagen
             if(!empty($_FILES['imagen']['tmp_name'])) {
                 $carpeta_imagenes = '../public/img/speakers';
@@ -142,6 +170,11 @@ class PonentesController {
     }
 
     public static function eliminar() {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
+
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
 
