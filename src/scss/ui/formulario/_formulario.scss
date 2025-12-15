@@ -57,6 +57,13 @@
             border-radius: 0 .5rem .5rem 0;
         }
     }
+    &__texto {
+        margin-top: 3rem;
+    }
+    &__imagen {
+        max-width: 20rem
+    }
+
     &__listado {
         @include m.tags;
     }
