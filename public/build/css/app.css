@@ -407,7 +407,7 @@ h3 {
 }
 .formulario__input, .formulario__input--sociales {
   padding: 1rem;
-  border: 1px solid rgb(160.5, 187.5, 214.5);
+  border: 1px solid rgb(167.3409090909, 181.1818181818, 190.4090909091);
   border-radius: 0.5rem;
 }
 .formulario__input--file {
@@ -748,7 +748,7 @@ h3 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #F8FAFC;
+  background-color: #eceff1;
 }
 .dashboard__header {
   background-color: #1E293B;
@@ -886,5 +886,53 @@ h3 {
 .dashboard__formulario {
   width: min(95%, 80rem);
   margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.table__thead {
+  background-color: #1E293B;
+  color: #FFFFFF;
+}
+.table__th {
+  padding: 1rem;
+  text-align: left;
+}
+.table__tr {
+  transition: background-color 0.2s ease-in;
+}
+.table__tr:nth-child(even) {
+  background-color: #eceff1;
+}
+.table__tr:hover {
+  background-color: rgb(208.5363636364, 215.8727272727, 220.7636363636);
+}
+.table__td, .table__td--acciones {
+  padding: 1.5rem 1rem;
+}
+.table__td--acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  align-items: center;
+}
+.table__accion {
+  all: unset;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.table__accion--editar {
+  color: #007df4;
+}
+.table__accion--eliminar {
+  color: rgb(169, 0, 0);
+}
+.table__accion:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=app.css.map */
