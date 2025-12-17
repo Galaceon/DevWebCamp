@@ -14,7 +14,7 @@ class Paginacion {
        $this->total_registros = (int) $total_registros;
     }
 
-    // Obtiene el total de registros a mostrar
+    // Obtiene el total de registros a mostrar (9 x (3-1) = 9 x 2 = 18, saltate 18 registros y empieza a mostrar desde el 19)
     public function offset() {
         return $this->registros_por_pagina * ($this->pagina_actual -1);
     }
@@ -56,6 +56,7 @@ class Paginacion {
         $html = '';
         if($this->total_registros > 1) {
             $html .= '<div class="paginacion">';
+            
             $html .= $this->enlace_anterior();
             $html .= $this->enlace_siguiente();
 
