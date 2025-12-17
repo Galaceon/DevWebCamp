@@ -86,7 +86,7 @@
         width: 100%;
         overflow: scroll;
         @include m.tablet {
-            padding: 1rem 5rem 3rem y 5rem;
+            padding: 1rem 5rem 3rem 5rem;
         }
     }
     &__contenedor-boton {
@@ -109,6 +109,7 @@
         background-color: v.$blanco;
         padding: 2rem;
         border-radius: 1rem;
+        margin-top: 5rem;
     }
     &__formulario {
         @extend .dashboard__contenedor;

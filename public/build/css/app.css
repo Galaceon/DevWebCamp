@@ -847,7 +847,7 @@ h3 {
 }
 @media (min-width: 768px) {
   .dashboard__contenido {
-    padding: 1rem 5rem 3rem y 5rem;
+    padding: 1rem 5rem 3rem 5rem;
   }
 }
 @media (min-width: 768px) {
@@ -888,6 +888,7 @@ h3 {
   background-color: #FFFFFF;
   padding: 2rem;
   border-radius: 1rem;
+  margin-top: 5rem;
 }
 .dashboard__formulario {
   width: min(95%, 80rem);
@@ -940,5 +941,31 @@ h3 {
 }
 .table__accion:hover {
   cursor: pointer;
+}
+.paginacion {
+  margin: 5rem 0 3rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .paginacion {
+    justify-content: right;
+  }
+}
+.paginacion__enlace {
+  color: #007df4;
+  font-size: 2rem;
+}
+.paginacion__enlace--texto {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid 1px #007df4;
+  transition: 0.3s ease-out;
+}
+.paginacion__enlace--texto:hover {
+  background-color: #007df4;
+  color: #FFFFFF;
 }
 /*# sourceMappingURL=app.css.map */

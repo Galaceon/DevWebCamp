@@ -21,11 +21,11 @@ class PonentesController {
         if(!$pagina_actual || $pagina_actual < 1) {
             header('Location: /admin/ponentes?page=1');
         }
-        $registros_por_pagina = 8;
+        $registros_por_pagina = 9;
         $total = Ponente::total();
         $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
-        if($paginacion->total_paginas < $pagina_actual) {
+        if($paginacion->total_paginas() < $pagina_actual) {
             header('Location: /admin/ponentes?page=1');
         }
 
