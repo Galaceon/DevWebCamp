@@ -36,7 +36,7 @@
     </div>
 
     <div id="horas" class="formulario__campo">
-        <label for="" class="formulario__label">Seleccionar Hora</label>
+        <label for="categoria" class="formulario__label">Seleccionar Hora</label>
 
         <ul id="horas" class="horas">
             <?php foreach($horas as $hora) { ?>
