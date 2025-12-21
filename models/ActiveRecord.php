@@ -142,7 +142,7 @@ class ActiveRecord {
             }
         }
         $resultado = self::consultarSQL($query);
-        return array_shift( $resultado ) ;
+        return $resultado;
     }
 
     // Paginar los registros
