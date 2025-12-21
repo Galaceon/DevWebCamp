@@ -20,7 +20,7 @@ class EventosController {
     public static function crear(Router $router) {
         $alertas = [];
 
-        $categotias = Categoria::all();
+        $categotias = Categoria::all('ASC');
         $dias = Dia::all('ASC');
         $horas = Hora::all('ASC');
 
