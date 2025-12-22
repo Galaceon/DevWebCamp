@@ -58,6 +58,8 @@
         <ul id="listado-ponentes" class="listado-ponentes">
             <!-- Ponentes generados al realizar busquedas de estos -->
         </ul>
+
+        <input type="hidden" name="ponente_id" value="">
     </div>
 
     <div class="formulario__campo">
