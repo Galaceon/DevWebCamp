@@ -49,7 +49,7 @@
             </tbody>
         </table>
     <?php } else { ?>
-        <p class="text-center">No Hay Ponentes Aun</p>
+        <p class="text-center">No Hay Ponentes Aún</p>
     <?php } ?>
 </div>
 
