@@ -1,6 +1,7 @@
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Informacion Evento</legend>
 
+    <!-- NOMBRE y DESCRIPCIÓN del Evento -->
     <div class="formulario__campo">
         <label for="nombre" class="formulario__label">Nombre Evento</label>
         <input type="text" class="formulario__input" id="nombre" name="nombre" placeholder="Nombre Ponente" value="<?php echo $evento->nombre; ?>">
@@ -11,6 +12,7 @@
         <textarea class="formulario__input" id="descripcion" name="descripcion" placeholder="Descripción Evento" rows="8" ><?php echo $evento->descripcion; ?></textarea>
     </div>
 
+    <!-- CATEGORIA del Evento -->
     <div class="formulario__campo">
         <label for="categoria" class="formulario__label">Categoria o Tipo de Evento</label>
         <select class="formulario__select" id="categoria" name="categoria_id">
@@ -24,7 +26,8 @@
             <?php } ?>
         </select>
     </div>
-
+    
+    <!-- DIA del Evento -->
     <div class="formulario__campo">
         <label for="categoria" class="formulario__label">Selecciona el Día</label>
         <div class="formulario__radio">
@@ -45,6 +48,7 @@
         <input type="hidden" name="dia_id" value="<?php echo $evento->dia_id; ?>">
     </div>
 
+    <!-- HORA del Evento -->
     <div id="horas" class="formulario__campo">
         <label for="categoria" class="formulario__label">Seleccionar Hora</label>
 
@@ -61,6 +65,7 @@
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Información Extra</legend>
 
+    <!-- PONENTE del Evento -->
     <div class="formulario__campo">
         <label for="ponentes" class="formulario__label">Ponente</label>
         <input type="text" class="formulario__input" id="ponentes" placeholder="Buscar Ponente">
@@ -69,9 +74,10 @@
             <!-- Ponentes generados al realizar busquedas de estos -->
         </ul>
 
-        <input type="hidden" name="ponente_id" value="">
+        <input type="hidden" name="ponente_id" value="<?php echo $evento->ponente_id; ?>">
     </div>
 
+    <!-- boton de EDITAR -->
     <div class="formulario__campo">
         <label for="disponibles" class="formulario__label">Lugares Disponibles</label>
         <input value="<?php echo $evento->disponibles; ?>" type="number" min="1" class="formulario__input" id="disponibles" name="disponibles" placeholder="Ej. 20">
