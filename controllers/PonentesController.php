@@ -182,12 +182,12 @@ class PonentesController {
     }
 
     public static function eliminar() {
-        if(!is_admin()) {
-            header('Location: /login');
-            exit;
-        }
-
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /login');
+                exit;
+            }
+
             $id = $_POST['id'];
 
             $ponente = Ponente::find($id);
@@ -201,8 +201,6 @@ class PonentesController {
             if($resultado) {
                 header('Location: /admin/ponentes');
             }
-
-            debuguear($ponente);
         }
     }
 }
