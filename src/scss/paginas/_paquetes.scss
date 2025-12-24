@@ -12,13 +12,34 @@
             align-items: flex-start;
         }
     }
+
+    &__especial {
+        border: solid 2px v.$azul;
+        border-radius: 1.5rem;
+        background-color: v.$azul;
+        
+    }
+    &__header {
+        padding: 1rem 0;
+        text-align: center;
+        color: v.$blanco;
+        font-weight: v.$bold;
+        text-transform: uppercase;
+
+        p {
+            margin: 0;
+        }
+    }
 }
 
 .paquete {
     @include m.card;
+    border-radius: 1.5rem;
+    background-color: v.$blanco;
 
     &:nth-child(2) {
         order: -1;
+        border: solid 0px v.$azul;
 
         @include m.tablet {
             order: unset;

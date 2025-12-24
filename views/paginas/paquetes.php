@@ -11,17 +11,22 @@
             <ul class="paquete__precio">0€</ul>
         </div>
 
-        <div class="paquete">
-            <h3 class="paquete__nombre">Pase Presencial</h3>
-            <ul class="paquete__lista">
-                <li class="paquete__elemento">Acceso Presencial a DevWebCamp</li>
-                <li class="paquete__elemento">Pase por 2 días</li>
-                <li class="paquete__elemento">Acceso a Tayeres y Conferencias</li>
-                <li class="paquete__elemento">Acceso a grabaciones </li>
-                <li class="paquete__elemento">Camisa del evento</li>
-                <li class="paquete__elemento">Comida y Bebida</li>
-            </ul>
-            <ul class="paquete__precio">199€</ul>
+        <div class="paquetes__especial">
+            <div class="paquetes__header">
+                <p>Más Vendido</p>
+            </div>
+            <div class="paquete">
+                <h3 class="paquete__nombre">Pase Presencial</h3>
+                <ul class="paquete__lista">
+                    <li class="paquete__elemento">Acceso Presencial a DevWebCamp</li>
+                    <li class="paquete__elemento">Pase por 2 días</li>
+                    <li class="paquete__elemento">Acceso a Tayeres y Conferencias</li>
+                    <li class="paquete__elemento">Acceso a grabaciones </li>
+                    <li class="paquete__elemento">Camisa del evento</li>
+                    <li class="paquete__elemento">Comida y Bebida</li>
+                </ul>
+                <ul class="paquete__precio">199€</ul>
+            </div>
         </div>
 
         <div class="paquete">

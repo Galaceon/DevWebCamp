@@ -406,6 +406,21 @@ h3 {
     align-items: flex-start;
   }
 }
+.paquetes__especial {
+  border: solid 2px #007df4;
+  border-radius: 1.5rem;
+  background-color: #007df4;
+}
+.paquetes__header {
+  padding: 1rem 0;
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.paquetes__header p {
+  margin: 0;
+}
 
 .paquete {
   border: 1px solid rgb(113.150209205, 129.4782426778, 152.949790795);
@@ -416,8 +431,13 @@ h3 {
   font-size: 2.6rem;
   margin: 2rem 0;
 }
+.paquete {
+  border-radius: 1.5rem;
+  background-color: #FFFFFF;
+}
 .paquete:nth-child(2) {
   order: -1;
+  border: solid 0px #007df4;
 }
 @media (min-width: 768px) {
   .paquete:nth-child(2) {
@@ -436,6 +456,26 @@ h3 {
   color: #007df4;
   font-weight: 700;
   text-align: center;
+}
+
+.agenda {
+  padding: 5rem 0;
+  width: min(95%, 140rem);
+  margin: 0 auto;
+}
+
+.eventos__heading {
+  color: #007df4;
+  margin: 5rem 0;
+  text-align: left;
+  font-size: clamp(2rem, -0.8rem + 8vw, 6rem);
+}
+.eventos__fecha {
+  color: #64748B;
+  margin: 3rem 0 1rem 0;
+}
+.eventos--workshops .eventos__heading {
+  color: #00c8c2;
 }
 
 .formulario {
