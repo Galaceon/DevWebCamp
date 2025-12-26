@@ -26,6 +26,14 @@
         #{$modificador}__heading {
             color: v.$secundario;
         }
+
+        .evento__informacion {
+            background-color: v.$secundario;
+            
+            &:hover {
+                background-color: color.scale(v.$secundario, $lightness: -15%);;
+            }
+        }
     }
 
     .swiper-button-next,
