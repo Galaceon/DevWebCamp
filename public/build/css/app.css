@@ -713,7 +713,7 @@ h3 {
     justify-content: flex-end;
   }
 }
-.header__enlace {
+.header__enlace, .header__submit {
   color: #FFFFFF;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -723,8 +723,11 @@ h3 {
   cursor: pointer;
   transition: color 0.2s ease-out;
 }
-.header__enlace:hover {
+.header__enlace:hover, .header__submit:hover {
   color: #007df4;
+}
+.header__form {
+  display: flex;
 }
 .header__contenido {
   padding-top: 10rem;
@@ -810,6 +813,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin: 2rem;
+  white-space: nowrap;
 }
 @media (min-width: 1024px) {
   .barra__logo {
@@ -832,8 +836,8 @@ h3 {
 }
 .navegacion__enlace {
   color: #FFFFFF;
-  font-size: 2rem;
-  padding: 2rem 1.5rem;
+  font-size: 1.8rem;
+  padding: 2rem 1.2rem;
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
@@ -845,7 +849,7 @@ h3 {
     display: inline-block;
   }
 }
-.navegacion__enlace:hover {
+.navegacion__enlace:hover, .navegacion__enlace--actual {
   background-color: #FFFFFF;
   color: #007df4;
 }
@@ -871,6 +875,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin: 2rem;
+  white-space: nowrap;
 }
 @media (min-width: 1024px) {
   .footer__logo {
@@ -987,6 +992,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin: 2rem;
+  white-space: nowrap;
 }
 @media (min-width: 1024px) {
   .dashboard__logo {

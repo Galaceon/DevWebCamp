@@ -9,8 +9,8 @@
     }
     &__enlace {
         color: v.$blanco;
-        font-size: 2rem;
-        padding: 2rem 1.5rem;
+        font-size: 1.8rem;
+        padding: 2rem 1.2rem;
         font-weight: v.$black;
         text-transform: uppercase;
         text-align: center;
@@ -21,7 +21,8 @@
             display: inline-block;
         }
 
-        &:hover {
+        &:hover,
+        &--actual {
             background-color: v.$blanco;
             color: v.$azul;
         }
