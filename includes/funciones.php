@@ -34,3 +34,10 @@ function is_admin() {
     }
     return isset($_SESSION['admin']) && (int) $_SESSION['admin'] === 1;
 }
+
+function aos_animation() : void {
+    $efectos = ['fade-up', 'fade-down', 'fade-left', 'fade-right'];
+    $efecto = array_rand($efectos, 1);
+
+    echo $efectos[$efecto];
+}
