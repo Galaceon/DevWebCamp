@@ -792,6 +792,13 @@ h3 {
   width: auto;
 }
 
+.pagina_404__contenedor {
+  text-align: center;
+}
+.pagina_404__enlace {
+  color: #007df4;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;
