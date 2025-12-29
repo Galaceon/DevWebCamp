@@ -32,7 +32,7 @@
 
     <div class="speakers__grid">
         <?php foreach($ponentes as $ponente) { ?>
-            <div class="speaker">
+            <div data-aos="fade-down" data-aos-duration="650" class="speaker">
                 <picture>
                     <source srcset="img/speakers/<?php echo $ponente->imagen; ?>.webp" type="image/webp"> <!-- Imagenes del Ponente -->
                     <source srcset="img/speakers/<?php echo $ponente->imagen; ?>.png" type="image/png">
@@ -100,19 +100,19 @@
     <p class="boletos__descripcion">Precios para DevWebCamp</p>
 
     <div class="boletos__grid">
-        <div class="boleto boleto--presencial">
+        <div data-aos="flip-left" data-aos-duration="1000" class="boleto boleto--presencial">
             <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
             <p class="boleto__plan">Presencial</p>
             <p class="boleto__precio">199€</p>
         </div>
 
-        <div class="boleto boleto--virtual">
+        <div data-aos="flip-right" data-aos-duration="1000" class="boleto boleto--virtual">
             <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
             <p class="boleto__plan">Virtual</p>
             <p class="boleto__precio">49€</p>
         </div>
 
-        <div class="boleto boleto--gratis">
+        <div data-aos="flip-left" data-aos-duration="1000" class="boleto boleto--gratis">
             <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
             <p class="boleto__plan">Gratis</p>
             <p class="boleto__precio">Gratis - 0€</p>
