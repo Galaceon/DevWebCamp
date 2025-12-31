@@ -3,7 +3,7 @@
 
     if(horas) {
 
-        const categoria = document.querySelector('[name="categoria_id"]');
+        const categoria = document.querySelector('[name="categoria_id"]'); // Workshop o Conferencia
         const dias = document.querySelectorAll('[name="dia"]');
         const inputHiddenDia = document.querySelector('[name="dia_id"]');
         const inputHiddenHora = document.querySelector('[name="hora_id"]');
@@ -33,9 +33,11 @@
 
         }
 
-
+        // Buscar eventos en base a la busqueda del usuario
         function terminoBusqueda(e) {
+            // Llenar el objeto de busqueda
             busqueda[e.target.name] = e.target.value;
+            console.log(busqueda);
 
             // Reiniciar los campos ocultos y el selector de horas
             inputHiddenHora.value = '';

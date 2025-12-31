@@ -1,8 +1,8 @@
 <?php 
-    include_once __DIR__ . '/conferencias.php';
+    include_once __DIR__ . '/conferencias.php'; // Div slider de cada Conferencias
 ?>
 
-<section class="resumen">
+<section class="resumen">  <!-- RESUMEN 4 GRIDS del evento -->
     <div class="resumen__grid">
         <div data-aos="fade-right" class="resumen__bloque">
             <p class="resumen__texto resumen__texto--numero"><?php echo $ponentes_total; ?></p>
@@ -26,7 +26,7 @@
     </div>
 </section>
 
-<section class="speakers">
+<section class="speakers"> <!-- SPEAKERS, vienen de la DB -->
     <h2 class="speakers__heading">Speakers</h2>
     <p class="speakers__descripcion">Conoce a nuestros expertos de DevWebCamp</p>
 
@@ -93,9 +93,9 @@
     </div>
 </section>
 
-<div id="mapa" class="mapa"></div>
+<div id="mapa" class="mapa"></div> <!-- Mapa del evento, usando leaflet -->
 
-<section class="boletos">
+<section class="boletos"> <!-- Boletos animados -->
     <h2 class="boletos__heading">Boletos & Precios</h2>
     <p class="boletos__descripcion">Precios para DevWebCamp</p>
 
