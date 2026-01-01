@@ -6,6 +6,8 @@ class Ponente extends ActiveRecord {
     protected static $tabla = 'ponentes';
     protected static $columnasDB = ['id', 'nombre', 'apellido', 'ciudad', 'pais', 'imagen', 'tags', 'redes'];
 
+    // No atributos definidos previamente porque se usan en el constructor
+
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;

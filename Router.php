@@ -67,7 +67,7 @@ class Router
             call_user_func($fn, $this);
         } else {
             // No hay ruta definida para esta URL/método -> redirige a 404
-            header('Location: /404');
+            // header('Location: /404');
         }
     }
 
