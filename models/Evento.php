@@ -4,8 +4,10 @@ namespace Model;
 
 class Evento extends ActiveRecord {
     protected static $tabla = 'eventos';
+    // Columnas de la tabla 'eventos' en la base de datos
     protected static $columnasDB = ['id', 'nombre', 'descripcion', 'disponibles', 'categoria_id', 'dia_id', 'hora_id', 'ponente_id'];
 
+    // Atributos de la clase Evento, sirven para crear nuevos registros en la BD
     public $id;
     public $nombre;
     public $descripcion;
@@ -15,7 +17,7 @@ class Evento extends ActiveRecord {
     public $hora_id;
     public $ponente_id;
     
-    public function __construct($args = []) // Constructor ya que tendra nuevos registros
+    public function __construct($args = []) // Constructor ya que tendra nuevos registros en la BD
     {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? null;

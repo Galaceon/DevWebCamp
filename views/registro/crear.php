@@ -9,6 +9,10 @@
                 <li class="paquete__elemento">Acceso Virtual a DevWebCamp</li>
             </ul>
             <ul class="paquete__precio">0€</ul>
+
+            <form method="POST" action="/finalizar-registro/gratis">
+                <input class="paquetes__submit" type="submit" value="Inscripción Gratis">
+            </form>
         </div>
 
         <div data-aos="fade-down" data-aos-delay="350" class="paquetes__especial">
