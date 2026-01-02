@@ -878,6 +878,31 @@ h3 {
     top: calc(50% - 2.5rem);
   }
 }
+.boleto {
+  perspective: 800px;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+  transform: rotateX(0deg) rotateY(0deg);
+  cursor: crosshair;
+}
+.boleto:hover {
+  transition: none;
+}
+.boleto.is-active {
+  transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(1.05);
+}
+.boleto .boleto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--shineX, 50%) var(--shineY, 50%), rgba(255, 255, 255, 0.3), transparent 70%);
+  mix-blend-mode: overlay;
+  transition: background 0.2s ease;
+  pointer-events: none;
+}
+.boleto .boleto.is-active::after {
+  opacity: 1;
+}
 
 .pagina_404__contenedor {
   text-align: center;
