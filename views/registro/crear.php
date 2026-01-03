@@ -55,7 +55,8 @@
     </div>
 </main>
 
-<!-- Reemplazar CLIENT_ID por tu client id proporcionado al crear la app desde el developer dashboard) -->
+
+<!-- Codigo funcionamiento de Paypal -->
 <script src="https://www.paypal.com/sdk/js?client-id=AST0ZWaso5LaV3Giu08paS4jWECoVVbHsVhhjzwrDhVVZDy1Nh-rg5BA4CGz5M2LsYA1MHG9iu2cZ4Fz&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
 
 <script>
