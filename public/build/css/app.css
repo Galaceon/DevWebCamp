@@ -470,10 +470,21 @@ h3 {
 }
 .paquete__precio {
   font-size: 6rem;
-  margin: 3rem 0 0 0;
+  margin: 3rem 0;
   color: #007df4;
   font-weight: 700;
   text-align: center;
+}
+.paquete__pago {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+.paquete__pago img {
+  width: 50%;
+}
+.paquete__formulario-pago {
+  width: 100%;
 }
 
 .agenda {
@@ -752,12 +763,15 @@ h3 {
 .boleto--presencial {
   background-color: hsl(178, 100%, 39%);
   background-image: radial-gradient(at 16% 95%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 59% 73%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 92% 40%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 36% 8%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 0% 100%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 0% 100%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 0% 0%, hsl(209, 100%, 47%) 0px, transparent 50%);
+  box-shadow: inset 2px 0px 0 10px rgb(0, 118.75, 231.8);
 }
 .boleto--virtual {
   background-color: #00c8c2;
+  box-shadow: inset 2px 0px 0 10px rgb(0, 190, 184.3);
 }
 .boleto--gratis {
   background-color: #007df4;
+  box-shadow: inset 2px 0px 0 10px rgb(0, 118.75, 231.8);
 }
 .boleto__logo {
   color: #FFFFFF;
