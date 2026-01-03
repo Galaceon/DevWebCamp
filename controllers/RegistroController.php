@@ -28,13 +28,14 @@ class RegistroController {
 
     public static function gratis() {
 
-        if($_SERVER['REQUEST_METHOD']) {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(!is_auth()) {
                 header('Location: /');
                 exit;
             }
 
-            // Verificar si el usuario ya esta registrado (si ya eligió un plan)
+            // Verificar si el usuario ya esta registrado
+            // (Si ya eligió un plan. Verificacion solo para gratis, pagar no la tendra por si el usuario quiere cambiar de plan posteriormente)
             $registro = Registro::where('usuario_id', $_SESSION['id']);
             if(isset($registro) && $registro->paquete_id === "3") {
                 header('Location: /boleto?id=' . urlencode($registro->token));
@@ -84,5 +85,36 @@ class RegistroController {
             'titulo' => 'Asistencia a DevWebCamp',
             'registro' => $registro
         ]);
+    }
+
+    public static function pagar() {
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_auth()) {
+                header('Location: /');
+                exit;
+            }
+
+            // Validar que POST no venga vacio
+            if(empty($_POST)) {
+                echo json_encode([]);
+                return;
+            }
+
+            // Crear Registro
+            $datos = $_POST;
+            $datos['token'] = substr(md5(uniqid(rand(), true)), 0, 8);
+            $datos['usuario_id'] = $_SESSION['id'];
+
+            try {
+                $registro = new Registro($datos);
+                $resultado = $registro->guardar();
+                echo json_encode($resultado);
+            } catch (\Throwable $th) {
+                echo json_encode([
+                    'resultado' => 'error'
+                ]);
+            }
+        }
     }
 }

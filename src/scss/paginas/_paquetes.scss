@@ -58,9 +58,22 @@
 
     &__precio {
         font-size: 6rem;
-        margin: 3rem 0 0 0;
+        margin: 3rem 0;
         color: v.$azul;
         font-weight: v.$bold;
         text-align: center;
+    }
+
+    &__pago {
+        display: flex;
+        justify-content: center;
+        width: auto;
+
+        img {
+            width: 50%;
+        }
+    }
+    &__formulario-pago {
+        width: 100%;
     }
 }
