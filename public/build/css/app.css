@@ -1062,7 +1062,7 @@ h3 {
   width: auto;
   align-self: flex-start;
 }
-.formulario__submit--registrar {
+.formulario__submit--registrar, .formulario__submit--full {
   width: 100%;
 }
 
@@ -1738,5 +1738,21 @@ h3 {
 }
 .registro__eliminar:hover {
   cursor: pointer;
+}
+.registro__regalo {
+  margin-top: 3rem;
+}
+.registro__label {
+  display: block;
+  font-size: 2.2rem;
+  font: 700;
+  margin-bottom: 1rem;
+}
+.registro__select {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: solid 1px #64748B;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 /*# sourceMappingURL=app.css.map */
