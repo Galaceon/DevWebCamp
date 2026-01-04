@@ -59,4 +59,28 @@
     &__heading {
         margin: 0 0 3rem 0;
     }
+
+    &__evento {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        &:nth-child(even) {
+            background-color: color.scale(v.$gris-claro, $lightness: -8%);
+        }
+    }
+
+    &__nombre {
+        font-size: 2rem;
+        font-weight: v.$regular;
+        margin: 0;
+    }
+
+    &__eliminar {
+        all: unset;
+        color: v.$rojo;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
