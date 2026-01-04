@@ -1,11 +1,13 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
+@use 'sass:color';
 
 .eventos-registro {
     @include m.contenedor;
     @include m.tablet {
         display: flex;
-        gap: 2;
+        gap: 2rem;
+        align-items: flex-start;
     }
 
     &__listado {
@@ -23,16 +25,38 @@
     }
 
     &__heading {
-        &--conferencias {
-            color: v.$azul;
+        &--conferencias,
+        &--workshops {
             white-space: nowrap;
             @include m.texto-fluido(2rem, 4rem)
         }
+
+        &--conferencias {
+            color: v.$azul;
+        }
+        &--workshops {
+            color: v.$secundario;
+            margin-top: 6rem;
+        }
+    }
+
+    &__fecha {
+        margin: 6rem 0 1rem 0;
     }
 }
 
 .registro {
+    background-color: color.scale(v.$gris-claro, $lightness: -3%);
+    padding: 3rem;
+    border-radius: 1rem;
+
     @include m.tablet {
         flex: 0 0 40%;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 3rem;
+    }
+    &__heading {
+        margin: 0 0 3rem 0;
     }
 }
