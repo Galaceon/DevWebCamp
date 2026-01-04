@@ -787,7 +787,7 @@ h3 {
 .boleto--presencial {
   background-color: hsl(178, 100%, 39%);
   background-image: radial-gradient(at 16% 95%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 59% 73%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 92% 40%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 36% 8%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 0% 100%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 0% 100%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 0% 0%, hsl(209, 100%, 47%) 0px, transparent 50%);
-  box-shadow: inset 2px 0px 0 10px rgb(0, 118.75, 231.8);
+  box-shadow: inset 2px 0px 0 10px rgb(0, 112.5, 219.6);
 }
 .boleto--virtual {
   background-color: #00c8c2;
@@ -795,7 +795,7 @@ h3 {
 }
 .boleto--gratis {
   background-color: #007df4;
-  box-shadow: inset 2px 0px 0 10px rgb(0, 118.75, 231.8);
+  box-shadow: inset 2px 0px 0 10px rgb(0, 112.5, 219.6);
 }
 .boleto__logo {
   color: #FFFFFF;
@@ -1654,7 +1654,8 @@ h3 {
 @media (min-width: 768px) {
   .eventos-registro {
     display: flex;
-    gap: 2;
+    gap: 2rem;
+    align-items: flex-start;
   }
 }
 @media (min-width: 768px) {
@@ -1674,15 +1675,35 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.eventos-registro__heading--conferencias {
-  color: #007df4;
+.eventos-registro__heading--conferencias, .eventos-registro__heading--workshops {
   white-space: nowrap;
   font-size: clamp(2rem, -0.3rem + 10vw, 4rem);
 }
+.eventos-registro__heading--conferencias {
+  color: #007df4;
+}
+.eventos-registro__heading--workshops {
+  color: #00c8c2;
+  margin-top: 6rem;
+}
+.eventos-registro__fecha {
+  margin: 6rem 0 1rem 0;
+}
 
+.registro {
+  background-color: rgb(227.7609090909, 232.0618181818, 234.9290909091);
+  padding: 3rem;
+  border-radius: 1rem;
+}
 @media (min-width: 768px) {
   .registro {
     flex: 0 0 40%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 3rem;
   }
+}
+.registro__heading {
+  margin: 0 0 3rem 0;
 }
 /*# sourceMappingURL=app.css.map */

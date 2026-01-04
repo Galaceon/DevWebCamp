@@ -134,7 +134,6 @@ class RegistroController {
         $usuario_id = $_SESSION['id'];
         $registro = Registro::where('usuario_id', $usuario_id);
         if($registro->paquete_id !== "1") {
-            debuguear($registro);
             header('Location: /');
         }
 
