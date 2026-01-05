@@ -14,6 +14,8 @@ import Swal from "sweetalert2";
         const formularioRegistro = document.querySelector('#registro'); // Boton para enviar la info a traves de la API
         formularioRegistro.addEventListener('submit', submitFormulario);
 
+        mostrarEventos();
+
         function seleccionarEvento(e) {
 
             if(eventos.length < 5) {
@@ -69,6 +71,12 @@ import Swal from "sweetalert2";
                     eventoDOM.appendChild(botonEliminar);
                     resumen.appendChild(eventoDOM);
                 })
+            } else {
+                const noRegistro = document.createElement('P');
+                noRegistro.textContent = 'No hay eventos, añade hasta 5 del lado izquierdo';
+                noRegistro.classList.add('registro__texto');
+
+                resumen.appendChild(noRegistro);
             }
         }
 
@@ -92,7 +100,7 @@ import Swal from "sweetalert2";
         }
 
         // Enviar la informacion del formulario a traves de la API
-        function submitFormulario(e) {
+        async function submitFormulario(e) {
             // Prevenir el comportamiento por defecto del formulario, que es recargar la pagina
             e.preventDefault();
 
@@ -116,7 +124,22 @@ import Swal from "sweetalert2";
                 })
                 return;
             }
-            console.log('registrando...')
+            
+
+            // Objeto de formdata (no añadimos datos de usuario, es mas seguro hacerlo desde php)
+            const datos = new FormData();
+            datos.append('eventos', eventosId);
+            datos.append('regalo_id', regaloId);
+
+
+            const url = '/finalizar-registro/conferencias';
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                body: datos
+            })
+            const resultado = await respuesta.json();
+
+            console.log(resultado);
         }
     }
 

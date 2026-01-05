@@ -6,6 +6,7 @@ class Registro extends ActiveRecord {
     protected static $tabla = 'registros';
     protected static $columnasDB = ['id', 'paquete_id', 'pago_id', 'token', 'usuario_id', 'regalo_id'];
 
+    // Constructor necesario ya que en su controlador hay: $registro = new Registro($datos);
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
