@@ -6,19 +6,18 @@ import Swal from "sweetalert2";
 
     if(resumen) {
 
-        let eventos = [];
+        let eventos = []; // Array de objetos con los eventos seleccionados
     
-
-        const eventosBoton = document.querySelectorAll('.evento__agregar');
+        const eventosBoton = document.querySelectorAll('.evento__agregar'); // Boton para agregar evento al div de registro
         eventosBoton.forEach(boton => boton.addEventListener('click', seleccionarEvento));
 
-        const formularioRegistro = document.querySelector('#registro');
+        const formularioRegistro = document.querySelector('#registro'); // Boton para enviar la info a traves de la API
         formularioRegistro.addEventListener('submit', submitFormulario);
 
         function seleccionarEvento(e) {
 
             if(eventos.length < 5) {
-                // Deshabilitar el Evento presionado
+                // Deshabilitar el Evento presionado( para evitar evento duplicados )
                 e.target.disabled = true;
 
                 // Añadir el Evento presionado al array de eventos
@@ -43,7 +42,7 @@ import Swal from "sweetalert2";
             }
         }
 
-
+        // Muestra los eventos que estan dentro del array de eventos
         function mostrarEventos() {
             // Limpiar el HTML para evitar eventos repetidos
             limpiarEventos();
@@ -74,29 +73,36 @@ import Swal from "sweetalert2";
         }
 
         function eliminarEvento(id) {
+            // Filtramos para que filtre todos los eventos menos el que queremos eliminar
             eventos = eventos.filter(evento => evento.id !== id);
+
+            // Habilitar el boton de agregar del evento eliminado
             const botonAgregar = document.querySelector(`[data-id="${id}"]`);
             botonAgregar.disabled = false;
 
+            // Volver a mostrar los eventos
             mostrarEventos();
         }
 
+        // Limpia el HTML del div de resumen para evitar duplicados
         function limpiarEventos() {
             while(resumen.firstChild) {
                 resumen.removeChild(resumen.firstChild);
             }
         }
 
-
+        // Enviar la informacion del formulario a traves de la API
         function submitFormulario(e) {
+            // Prevenir el comportamiento por defecto del formulario, que es recargar la pagina
             e.preventDefault();
 
-            // Obtener el regalo
+            // Obtener el regalo, value del select
             const regaloId = document.querySelector('#regalo').value;
 
             // Sacar los id de cada evento presionado del array de objetos 'eventos'
             const eventosId = eventos.map(evento => evento.id);
 
+            // Si no hay eventos seleccionados o no hay regalo seleccionado, mostrar error y return
             if(eventosId.length === 0 || regaloId === '') {
                 Swal.fire({
                     title: 'Error',
