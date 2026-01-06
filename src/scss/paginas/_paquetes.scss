@@ -1,0 +1,79 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.paquetes {
+
+    &__grid {
+        @include m.contenedor;
+        @include m.grid(1, 3rem);
+        @include m.tablet {
+            @include m.grid(3, 3rem);
+            align-items: flex-start;
+        }
+    }
+
+    &__submit {
+        margin-top: 3rem;
+        @include m.boton(v.$azul, v.$blanco);
+    }
+
+    &__especial {
+        border: solid 2px v.$azul;
+        border-radius: 1.5rem;
+        background-color: v.$azul;
+        
+    }
+    &__header {
+        padding: 1rem 0;
+        text-align: center;
+        color: v.$blanco;
+        font-weight: v.$bold;
+        text-transform: uppercase;
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.paquete {
+    @include m.card;
+    border-radius: 1.5rem;
+    background-color: v.$blanco;
+
+    &:nth-child(2) {
+        order: -1;
+        border: solid 0px v.$azul;
+
+        @include m.tablet {
+            order: unset;
+        }
+    }
+
+    &__lista {
+        @include m.reset-lista;
+        line-height: 2;
+    }
+
+    &__precio {
+        font-size: 6rem;
+        margin: 3rem 0;
+        color: v.$azul;
+        font-weight: v.$bold;
+        text-align: center;
+    }
+
+    &__pago {
+        display: flex;
+        justify-content: center;
+        width: auto;
+
+        img {
+            width: 50%;
+        }
+    }
+    &__formulario-pago {
+        width: 100%;
+    }
+}

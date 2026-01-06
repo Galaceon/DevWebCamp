@@ -74,7 +74,7 @@
             <!-- Ponentes generados al realizar busquedas de estos -->
         </ul>
 
-        <input type="hidden" name="ponente_id" value="<?php echo $evento->ponente_id; ?>">
+        <input type="hidden" name="ponente_id" value="<?php echo $evento->ponente_id; ?>"> <!-- Almacena el ID del ponente seleccionado -->
     </div>
 
     <!-- boton de EDITAR -->

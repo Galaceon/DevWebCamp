@@ -12,6 +12,7 @@ use Controllers\PaginasController;
 use Controllers\PonentesController;
 use Controllers\RegalosController;
 use Controllers\RegistradosController;
+use Controllers\RegistroController;
 
 $router = new Router();
 
@@ -59,14 +60,26 @@ $router->get('/api/ponentes', [APIPonentes::class, 'index']);
 $router->get('/api/ponente', [APIPonentes::class, 'ponente']);
 
 
-$router->get('/admin/registrados', [RegistradosController::class, 'index']);
+$router->get('/admin/registrados', [RegistradosController::class, 'index']); // Panel de admin: ver usuarios registrados al evento
 
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+
+// Registro de usuarios
+$router->get('/finalizar-registro', [RegistroController::class, 'crear']); // Finalizar el registro de cuenta de un usuario
+$router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
+$router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
+$router->get('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+$router->post('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+
+// Boleto Virtual
+$router->get('/boleto', [RegistroController::class, 'boleto']);
 
 // Área Publica
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/devwebcamp', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
 $router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
+
+$router->get('/404', [PaginasController::class, 'error']);
 
 $router->comprobarRutas();
