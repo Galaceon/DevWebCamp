@@ -7,6 +7,10 @@ use Model\EventoHorario;
 class APIEventos {
 
     public static function index() {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
 
         $dia_id = $_GET['dia_id'] ?? '';
         $categoria_id = $_GET['categoria_id'] ?? '';
