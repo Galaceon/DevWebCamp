@@ -3,6 +3,9 @@
 
 .bloques {
     @include m.contenedor;
+    @include m.tablet {
+        margin-top: 8rem;
+    }
 
     &__grid {
         @include m.grid(1, 3rem);
@@ -20,6 +23,9 @@
     &:nth-child(1) {
         @include m.bg-gradient(#F97316);
     }
+    &:nth-child(2) {
+        @include m.bg-gradient(#A855F7);
+    }
 
     &__heading {
         margin: 1rem 0 2rem 0;
@@ -32,6 +38,13 @@
 
     &__texto {
         margin: 1rem 0;
+
+        &--cantidad {
+            margin-top: 5rem;
+            font-weight: v.$black;
+            font-size: 6rem;
+            text-align: center;
+        }
     }
 
 }
