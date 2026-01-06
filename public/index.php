@@ -64,14 +64,14 @@ $router->get('/admin/registrados', [RegistradosController::class, 'index']); // 
 
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
 
-// Registro de usuarios
+// Registro de eventos para usuarios
 $router->get('/finalizar-registro', [RegistroController::class, 'crear']); // Finalizar el registro de cuenta de un usuario
 $router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
 $router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
 $router->get('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
 $router->post('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
 
-// Boleto Virtual
+// Boleto Virtual de cada usuario individual
 $router->get('/boleto', [RegistroController::class, 'boleto']);
 
 // Área Publica
@@ -80,6 +80,8 @@ $router->get('/devwebcamp', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
 $router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
 
+// Pagina 404, usada si el cliente escribe una url no existente
 $router->get('/404', [PaginasController::class, 'error']);
+
 
 $router->comprobarRutas();
