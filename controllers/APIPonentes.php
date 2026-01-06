@@ -2,17 +2,26 @@
 
 namespace Controllers;
 
-use Model\EventoHorario;
 use Model\Ponente;
 
 class APIPonentes {
 
     public static function index() {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
+
         $ponentes = Ponente::all();
         echo json_encode($ponentes);
     }
 
     public static function ponente() {
+        if(!is_admin()) {
+            header('Location: /login');
+            exit;
+        }
+
         $id = $_GET['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
