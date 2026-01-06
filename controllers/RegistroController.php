@@ -5,6 +5,7 @@ namespace Controllers;
 use Model\Categoria;
 use Model\Dia;
 use Model\Evento;
+use Model\EventosRegistros;
 use Model\Hora;
 use Model\Paquete;
 use Model\Ponente;
@@ -25,6 +26,10 @@ class RegistroController {
         $registro = Registro::where('usuario_id', $_SESSION['id']);
         if(isset($registro) && $registro->paquete_id === "3") {
             header('Location: /boleto?id=' . urlencode($registro->token));
+        }
+
+        if($registro->paquete_id === "1") {
+            header('Location: /finalizar-registro/conferencias');
         }
 
         $router->render('registro/crear', [
@@ -138,6 +143,11 @@ class RegistroController {
             header('Location: /');
         }
 
+        // Redireccionar a boleto virtual en caso de haber finalizado su registro
+        if(isset($registro->regalo_id)) {
+            header('Location: /boleto?id=' . urlencode($registro->token));
+        }
+
         $eventos = Evento::ordenar('hora_id', 'ASC');
 
         $eventos_formateados = [];
@@ -200,6 +210,8 @@ class RegistroController {
             }
 
 
+            $eventos_array = [];
+
             // Validar la disponibilidad de los eventos seleccionados
             foreach($eventos as $evento_id) {
                 $evento = Evento::find($evento_id);
@@ -209,8 +221,41 @@ class RegistroController {
                     echo json_encode(['resultado' => false]);
                     return;
                 }
+
+                $eventos_array[] = $evento;
             }
 
+            foreach($eventos_array as $evento) {
+                $evento->disponibles -= 1;
+                $evento->guardar();
+
+                // Almacenar el registro y el evento
+                $datos = [
+                    'evento_id' => (int) $evento->id,
+                    'registro_id' => (int) $registro->id
+                ];
+
+                $registro_usuario = new EventosRegistros($datos);
+                $registro_usuario->guardar();
+            }
+            
+            // Almacenar el regalo
+            $registro->sincronizar(['regalo_id' => $_POST['regalo_id']]);
+            $resultado = $registro->guardar();
+
+            // Si todo salio bien devolver respuesta JSON al JS
+            if($resultado) {
+                echo json_encode([
+                    'resultado' => $resultado, 
+                    'token' => $registro->token
+                ]);
+            } else {
+                echo json_encode(['resultado' => false]);
+                return;
+            }
+
+            // return para que no haga render a la vista, en este proceso $_POST no es lo que queremos
+            return;
         }
 
         $router->render('registro/conferencias', [
