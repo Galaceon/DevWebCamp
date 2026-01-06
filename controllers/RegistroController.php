@@ -22,14 +22,18 @@ class RegistroController {
             exit;
         }
 
-        // Verificar si el usuario ya esta registrado (si ya eligió un plan)
+        // Verificar si el usuario ya esta registrado (si ya eligió un plan), si eligio el plan GRATIS lo redirige
         $registro = Registro::where('usuario_id', $_SESSION['id']);
-        if(isset($registro) && $registro->paquete_id === "3") {
+        if(isset($registro) && ($registro->paquete_id === "3" || $registro->paquete_id === "2")) {
             header('Location: /boleto?id=' . urlencode($registro->token));
+            exit;
         }
 
-        if($registro->paquete_id === "1") {
+        // Verificar si el usuario ya eligió un plan PRESENCIAL( ya pagó ), si es así lo redirige a la selección de conferencias
+        // al mismo tiempo que la selección de conferencias redirige al boleto si ya finalizó su registro de eventos
+        if(isset($registro) && $registro->paquete_id === "1") {
             header('Location: /finalizar-registro/conferencias');
+            exit;
         }
 
         $router->render('registro/crear', [
@@ -50,6 +54,7 @@ class RegistroController {
             $registro = Registro::where('usuario_id', $_SESSION['id']);
             if(isset($registro) && $registro->paquete_id === "3") {
                 header('Location: /boleto?id=' . urlencode($registro->token));
+                exit;
             }
             
             $token = substr(md5(uniqid(rand(), true)), 0, 8);
@@ -67,6 +72,7 @@ class RegistroController {
 
             if($resultado) {
                 header('Location: /boleto?id=' . urlencode($registro->token));
+                exit;
             }
         }
     }
@@ -136,16 +142,25 @@ class RegistroController {
             exit;
         }
 
-        // Validar que el usuario tenga el plan presencial
         $usuario_id = $_SESSION['id'];
         $registro = Registro::where('usuario_id', $usuario_id);
+
+        // Redireccionar a boleto en caso de haber finalizado su registro de tipo presencial
+        if(isset($registro) && $registro->paquete_id === "2") {
+            header('Location: /boleto?id=' . urlencode($registro->token));
+            exit;
+        }
+
+        // Validar que el usuario tenga el plan presencial
         if($registro->paquete_id !== "1") {
             header('Location: /');
+            exit;
         }
 
         // Redireccionar a boleto virtual en caso de haber finalizado su registro
-        if(isset($registro->regalo_id)) {
+        if(isset($registro->regalo_id) && $registro->paquete_id === "1") {
             header('Location: /boleto?id=' . urlencode($registro->token));
+            exit;
         }
 
         $eventos = Evento::ordenar('hora_id', 'ASC');
