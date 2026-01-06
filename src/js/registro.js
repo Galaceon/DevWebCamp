@@ -139,6 +139,31 @@ import Swal from "sweetalert2";
             })
             const resultado = await respuesta.json();
 
+            // Respuesta viene desde RegistroController, function conferencias, en su $_POST
+            if(resultado.resultado) {
+                Swal.fire({
+                    title: 'Registro Exitoso',
+                    text: 'Te has registrado correctamente, te esperamos en DevWebCamp',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        popup: 'swal-grande',
+                        confirmButton: 'btn-grande',
+                    }
+                }).then(() => location.href = `/boleto?id=${resultado.token}`)
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Hubo un error, intentalo de nuevo',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        popup: 'swal-grande',
+                        confirmButton: 'btn-grande',
+                    }
+                }).then( () => location.reload());
+            }
+
             console.log(resultado);
         }
     }
