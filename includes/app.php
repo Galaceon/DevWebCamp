@@ -11,5 +11,9 @@ $dotenv->safeLoad();
 require 'funciones.php';
 require 'database.php';
 
+
+// Iniciar sesión con seguridad (lo agregamos aquí)
+require 'session.php';
+
 // Conectarnos a la base de datos
 ActiveRecord::setDB($db);

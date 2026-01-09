@@ -78,6 +78,11 @@ class RegistroController {
     }
 
     public static function boleto(Router $router) {
+        if(!is_auth()) {
+            header('Location: /');
+            exit;
+        }
+
         // Validar la URL
         $id = $_GET['id'];
 
@@ -90,6 +95,14 @@ class RegistroController {
         // Buscarlo en la DB
         $registro = Registro::where('token', $id);
         if(!$registro) {
+            header('Location: /');
+            exit;
+        }
+
+        // Verificar que el token del registro( regitrado en el evento, no de sesion ) coincide con el token de la sesion iniciada
+        $usuario = Usuario::where('id', $_SESSION['id']);
+        $registroUsuario = Registro::where('usuario_id', $usuario->id);
+        if($registroUsuario->token !== $registro->token) {
             header('Location: /');
             exit;
         }

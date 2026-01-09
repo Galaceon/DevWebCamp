@@ -21,17 +21,11 @@ function pagina_actual($path) {
 
 // Verifica si el usuario está autenticado
 function is_auth() : bool {
-    if(!isset($_SESSION)) {
-        session_start();
-    }
     return isset($_SESSION['nombre']) && !empty($_SESSION);
 }
 
 // Verifica si el usuario es administrador
 function is_admin() : bool {
-    if(!isset($_SESSION)) {
-        session_start();
-    }
     return isset($_SESSION['admin']) && (int) $_SESSION['admin'] === 1;
 }
 
