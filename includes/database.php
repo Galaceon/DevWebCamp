@@ -7,8 +7,7 @@ $db = mysqli_connect(
 );
 
 if (!$db) {
-    echo "Error: No se pudo conectar a MySQL.";
-    echo "errno de depuración: " . mysqli_connect_errno();
-    echo "error de depuración: " . mysqli_connect_error();
+    error_log('Error de conexión a la base de datos');
+    header('Location: /error');
     exit;
 }

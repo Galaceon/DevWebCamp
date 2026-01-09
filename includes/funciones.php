@@ -28,7 +28,7 @@ function is_auth() : bool {
 }
 
 // Verifica si el usuario es administrador
-function is_admin() {
+function is_admin() : bool {
     if(!isset($_SESSION)) {
         session_start();
     }

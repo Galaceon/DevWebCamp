@@ -84,9 +84,11 @@ class ActiveRecord {
     // Sincroniza BD con Objetos en memoria
     public function sincronizar($args=[]) { 
         foreach($args as $key => $value) {
-          if(property_exists($this, $key) && !is_null($value)) {
-            $this->$key = $value;
-          }
+
+            // Solo permitir columnas reales de BD
+            if (in_array($key, static::$columnasDB, true) && $key !== 'id' && !is_null($value)) {
+                $this->$key = $value;
+            }
         }
     }
 
@@ -105,6 +107,9 @@ class ActiveRecord {
 
     // Obtener todos los Registros
     public static function all($orden = 'DESC') {
+        $orden = strtoupper($orden);
+        $orden = in_array($orden, ['ASC', 'DESC']) ? $orden : 'DESC';
+
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id $orden";
         $resultado = self::consultarSQL($query);
         return $resultado;
@@ -112,6 +117,9 @@ class ActiveRecord {
 
     // Busca un registro por su id
     public static function find($id) {
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+            if(!$id) return null;
+
         $query = "SELECT * FROM " . static::$tabla  ." WHERE id = $id";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
@@ -119,6 +127,9 @@ class ActiveRecord {
 
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
+        $limite = filter_var($limite, FILTER_VALIDATE_INT);
+        if(!$limite || $limite < 1) return [];
+
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $limite " ;
         $resultado = self::consultarSQL($query);
         return $resultado;
@@ -126,6 +137,9 @@ class ActiveRecord {
 
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
+        if(!in_array($columna, static::$columnasDB)) return null;
+        $valor = self::$db->escape_string($valor);
+
         $query = "SELECT * FROM " . static::$tabla . " WHERE $columna = '$valor'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
@@ -133,6 +147,10 @@ class ActiveRecord {
 
     // Retornar los registros con un orden
     public static function ordenar($columna, $orden) {
+        if(!in_array($columna, static::$columnasDB)) return [];
+        $orden = strtoupper($orden);
+        $orden = in_array($orden, ['ASC', 'DESC']) ? $orden : 'ASC';
+
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY $columna $orden";
         $resultado = self::consultarSQL($query);
         return $resultado;
@@ -140,6 +158,13 @@ class ActiveRecord {
 
     // Retornar los registros con un orden y con un limite maximo
     public static function ordenarLimite($columna, $orden, $limite) {
+        if(!in_array($columna, static::$columnasDB)) return [];
+        $orden = strtoupper($orden);
+        $orden = in_array($orden, ['ASC', 'DESC']) ? $orden : 'ASC';
+
+        $limite = filter_var($limite, FILTER_VALIDATE_INT);
+        if(!$limite || $limite < 1) return [];
+
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY $columna $orden LIMIT $limite ";
         $resultado = self::consultarSQL($query);
         return $resultado;
@@ -149,6 +174,11 @@ class ActiveRecord {
     public static function whereArray($array = []) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ";
         foreach($array as $key => $value) {
+            // Validar columna
+            if(!in_array($key, static::$columnasDB, true)) {
+                continue;
+            }
+
             if($key == array_key_last($array)) {
                 $query .= "$key = '$value'";
             } else {
@@ -161,6 +191,11 @@ class ActiveRecord {
 
     // Paginar los registros
     public static function paginar($por_pagina, $offset) {
+        $por_pagina = filter_var($por_pagina, FILTER_VALIDATE_INT);
+        $offset = filter_var($offset, FILTER_VALIDATE_INT);
+
+        if($por_pagina < 1 || $offset < 0) return [];
+
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $por_pagina OFFSET $offset " ;
         $resultado = self::consultarSQL($query);
         return $resultado;
@@ -170,8 +205,9 @@ class ActiveRecord {
     public static function total($columna = '', $valor = '') {
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
 
-        if($columna) {
-            $query .= " WHERE $columna = $valor";
+        if ($columna && in_array($columna, static::$columnasDB, true)) {
+            $valor = self::$db->escape_string($valor);
+            $query .= " WHERE $columna = '$valor'";
         }
 
         $resultado = self::$db->query($query);
@@ -185,6 +221,12 @@ class ActiveRecord {
         $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE ";
 
         foreach($array as $key => $value) {
+            if (!in_array($key, static::$columnasDB, true)) {
+                continue;
+            }
+            $value = self::$db->escape_string($value);
+
+
             if($key == array_key_last($array)) {
                 $query .= "$key = '$value'";
             } else {
