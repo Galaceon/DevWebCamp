@@ -1,6 +1,6 @@
-<main class="registro">
-    <h2 class="registro__heading"><?php echo $titulo; ?></h2>
-    <p class="registro__descripcion">Elige tu plan</p>
+<main class="paquetes">
+    <h2 class="paquetes__heading"><?php echo $titulo; ?></h2>
+    <p class="paquetes__descripcion">Elige tu plan</p>
 
     <div class="paquetes__grid">
         <div data-aos="fade-down" data-aos-delay="100" class="paquete">
