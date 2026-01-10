@@ -36,5 +36,6 @@
     </script>
 
     <script src="/build/js/main.min.js" defer></script>
+    <script>window.CSRF_TOKEN = "<?php echo csrf_token(); ?>";</script>
 </body>
 </html>

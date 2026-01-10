@@ -12,6 +12,10 @@ class AuthController {
         $alertas = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
     
             $usuario = new Usuario($_POST);
 
@@ -58,6 +62,11 @@ class AuthController {
 
     public static function logout() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             session_start();
             $_SESSION = [];
             header('Location: /');
@@ -70,10 +79,16 @@ class AuthController {
         $usuario = new Usuario;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
 
             $usuario->sincronizar($_POST);
             
             $alertas = $usuario->validar_cuenta();
+
+            debuguear($usuario);
 
             if(empty($alertas)) {
                 $existeUsuario = Usuario::where('email', $usuario->email);
@@ -118,6 +133,11 @@ class AuthController {
         $alertas = [];
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             $usuario = new Usuario($_POST);
             $alertas = $usuario->validarEmail();
 
@@ -177,6 +197,10 @@ class AuthController {
 
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
 
             // Añadir el nuevo password
             $usuario->sincronizar($_POST);

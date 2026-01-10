@@ -14,6 +14,7 @@
             </div>
 
             <input type="submit" class="formulario__submit" value="Guardar Password">
+            <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
         </form>
     <?php } ?>
 

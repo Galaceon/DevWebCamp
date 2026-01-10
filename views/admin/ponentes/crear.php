@@ -15,5 +15,6 @@
         <?php include_once __DIR__ . '/formulario.php'; ?>
 
         <input type="submit" value="Registrar Ponente" class="formulario__submit formulario__submit--registrar">
+        <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
     </form>
 </div>

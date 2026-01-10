@@ -48,6 +48,11 @@ class PonentesController {
         $ponente =  new Ponente;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_admin()) {
                 header('Location: /login');
                 exit;
@@ -129,6 +134,11 @@ class PonentesController {
         $redes = json_decode($ponente->redes);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_admin()) {
                 header('Location: /login');
                 exit;
@@ -183,6 +193,11 @@ class PonentesController {
 
     public static function eliminar() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_admin()) {
                 header('Location: /login');
                 exit;

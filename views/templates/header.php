@@ -5,6 +5,7 @@
                 <a href="<?php echo is_admin() ? '/admin/dashboard' : '/finalizar-registro'; ?>" class="header__enlace">Administrar</a>
                 <form method="POST" action="/logout" class="header__form">
                     <input type="submit" value="Cerrar Sesión" class="header__submit">
+                    <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
                 </form>
             <?php } else { ?>
                 <a href="/registro" class="header__enlace">Registro</a>

@@ -60,6 +60,11 @@ class EventosController {
         $evento = new Evento;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_admin()) {
                 header('Location: /login');
                 exit;
@@ -111,6 +116,11 @@ class EventosController {
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_admin()) {
                 header('Location: /login');
                 exit;
@@ -141,6 +151,11 @@ class EventosController {
 
     public static function eliminar() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_admin()) {
                 header('Location: /login');
                 exit;

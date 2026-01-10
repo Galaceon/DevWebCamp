@@ -32,6 +32,7 @@
         </div>
 
         <input type="submit" class="formulario__submit" value="Crear Cuenta">
+        <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
     </form>
 
     <div class="acciones">

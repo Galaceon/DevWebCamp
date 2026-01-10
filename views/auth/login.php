@@ -18,6 +18,7 @@
         </div>
 
         <input type="submit" class="formulario__submit" value="Iniciar Sesión">
+        <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
     </form>
 
     <div class="acciones">

@@ -44,6 +44,11 @@ class RegistroController {
     public static function gratis() {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_auth()) {
                 header('Location: /');
                 exit;
@@ -120,6 +125,11 @@ class RegistroController {
     public static function pagar() {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_auth()) {
                 header('Location: /');
                 exit;
@@ -214,6 +224,11 @@ class RegistroController {
 
         // Manejando el registro de eventos mediante $_POST
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!csrf_validar()) {
+                http_response_code(403);
+                exit('CSRF token inválido');
+            }
+
             if(!is_auth()) {
                 header('Location: /');
                 exit;

@@ -84,9 +84,7 @@ class ActiveRecord {
     // Sincroniza BD con Objetos en memoria
     public function sincronizar($args=[]) { 
         foreach($args as $key => $value) {
-
-            // Solo permitir columnas reales de BD
-            if (in_array($key, static::$columnasDB, true) && $key !== 'id' && !is_null($value)) {
+            if(property_exists($this, $key) && !is_null($value)) {
                 $this->$key = $value;
             }
         }

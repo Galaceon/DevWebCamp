@@ -12,6 +12,7 @@
 
             <form method="POST" action="/finalizar-registro/gratis">
                 <input class="paquetes__submit" type="submit" value="Inscripción Gratis">
+                <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
             </form>
         </div>
 

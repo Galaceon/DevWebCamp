@@ -130,6 +130,8 @@ import Swal from "sweetalert2";
             const datos = new FormData();
             datos.append('eventos', eventosId);
             datos.append('regalo_id', regaloId);
+            datos.append('csrf_token', window.CSRF_TOKEN);
+            
 
 
             const url = '/finalizar-registro/conferencias';

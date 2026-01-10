@@ -12,8 +12,9 @@ require 'funciones.php';
 require 'database.php';
 
 
-// Iniciar sesión con seguridad (lo agregamos aquí)
+// Iniciar sesión con seguridad
 require 'session.php';
+require 'csrf.php';
 
 // Conectarnos a la base de datos
 ActiveRecord::setDB($db);
